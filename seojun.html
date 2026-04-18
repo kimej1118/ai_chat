@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+    /* ============================
+        BASE
+    ============================ */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      background-color: #1a1714;
+      font-family: 'Pretendard', sans-serif;
+    }
+    
+    /* ============================
+       SCROLL WRAP
+    ============================ */
+    .b_scroll-wrap {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 20px;
+      padding: 20px;
+      background-color: #1a1714;
+    }
+    
+    /* ============================
+       CARD
+    ============================ */
+    .b_card {
+      flex: 0 0 100%;
+      scroll-snap-align: center;
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    
+    .b_card--hq {
+      background:
+        linear-gradient(to bottom, rgba(41,37,34,.8), rgba(26,23,20,.9)),
+        url('https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&q=80&w=1000') center / cover;
+    }
+    
+    .b_card--patisserie {
+      background:
+        linear-gradient(to bottom, rgba(44,30,26,.85), rgba(28,18,15,.98)),
+        url('https://images.unsplash.com/photo-1550617931-e17a7b70dce2?auto=format&fit=crop&q=80&w=1000') center / cover;
+    }
+    
+    .b_card-inner {
+      padding: 40px 30px;
+    }
+    
+    /* ============================
+       LABEL ROW
+    ============================ */
+    .b_label-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 5px;
+    }
+    
+    .b_label {
+      color: #c5a059;
+      font-size: .8rem;
+      letter-spacing: .2rem;
+      font-weight: 700;
+    }
+    
+    .b_label--warm {
+      color: #e5b181;
+      font-weight: normal;
+    }
+    
+    .b_label-line {
+      flex-grow: 1;
+      height: 1px;
+      background: linear-gradient(to right, #c5a059, transparent);
+    }
+    
+    .b_label-line--warm {
+      background: linear-gradient(to right, #e5b181, transparent);
+    }
+    
+    /* ============================
+       TITLE
+    ============================ */
+    .b_title {
+      color: #fdfbf7;
+      font-size: 2rem;
+      font-family: serif;
+      letter-spacing: -1px;
+    }
+    
+    .b_title-sub {
+      font-size: .9rem;
+      vertical-align: middle;
+      color: #c5a059;
+    }
+    
+    .b_title-sub--warm {
+      color: #e5b181;
+    }
+    
+    /* ============================
+       QUOTE / DESC
+    ============================ */
+    .b_quote {
+      color: #c5a059;
+      font-style: italic;
+      font-size: 1.1rem;
+      margin: 15px 0 30px;
+      text-shadow: 0 2px 4px rgba(0,0,0,.3);
+    }
+    
+    .b_quote--warm {
+      color: #e5b181;
+    }
+    
+    .b_desc {
+      color: #d1d1d1;
+      line-height: 1.8;
+      font-size: .95rem;
+      margin-bottom: 40px;
+      word-break: keep-all;
+    }
+    
+    .b_desc--warm {
+      color: #e0d7d5;
+    }
+    
+    /* ============================
+       ORG BOX (HQ)
+    ============================ */
+    .b_org-box {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(197,160,89,.3);
+      border-radius: 15px;
+      padding: 25px;
+    }
+    
+    .b_org-ceo {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .b_org-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+    
+    .b_org-item {
+      padding: 15px;
+      background: rgba(255,255,255,.05);
+      border-left: 3px solid #c5a059;
+      color: #fdfbf7;
+      font-size: .85rem;
+    }
+    
+    .b_org-ceo .b_org-item {
+      padding: 10px;
+    }
+    
+    .b_org-label {
+      display: block;
+      color: #c5a059;
+      margin-bottom: 4px;
+    }
+    
+    /* ============================
+       DEPT LIST (PATISSERIE)
+    ============================ */
+    .b_dept-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .b_dept-title {
+      font-size: .75rem;
+      color: #e5b181;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .b_dept-icon {
+      font-size: 1.2rem;
+    }
+    
+    .b_dept-rows {
+      background: rgba(255,255,255,.05);
+      border-radius: 12px;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .b_dept-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .b_dept-name {
+      color: #fdfbf7;
+      font-size: .9rem;
+    }
+    
+    .b_dept-role {
+      color: #aaa;
+      font-size: .8rem;
+    }
+    
+    .b_dept-badge {
+      font-size: .75rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    
+    .b_dept-badge--head {
+      color: #e5b181;
+      background: rgba(229,177,129,.1);
+    }
+    
+    .b_dept-divider {
+      height: 1px;
+      background: rgba(255,255,255,.1);
+    }
+    </style>
+</head>
+<body>
+    <div class="b_scroll-wrap">
+ 
+  <!-- HEADQUARTERS -->
+  <div class="b_card b_card--hq">
+    <div class="b_card-inner">
+      <div class="b_label-row">
+        <span class="b_label">HEADQUARTERS</span>
+        <div class="b_label-line"></div>
+      </div>
+      <h2 class="b_title">La Sève <span class="b_title-sub">라 세브</span></h2>
+      <p class="b_quote">"가장 순수한 근원에서 피어나는 아름다움."</p>
+      <p class="b_desc">La Sève(라 세브)는 단순한 기업을 넘어, 창조적 영감과 최상의 재료를 발굴하는 '생명의 저장소' 입니다. 우리가 추구하는 모든 제품과 경험은 자연의 본질적인 힘과 예술가의 장인 정신에서 길어 올린 '삶의 수액' 과 같습니다. 겉으로 드러나는 화려함보다는, 깊은 곳에서 우러나오는 본질적인 가치와 풍요로움을 세상에 전파하는 것이 우리의 사명입니다</p>
+ 
+      <div class="b_org-box">
+        <div class="b_org-ceo">
+          <div class="b_org-item">
+            <strong class="b_org-label">CEO</strong>
+          </div>
+        </div>
+        <div class="b_org-grid">
+          <div class="b_org-item">
+            <strong class="b_org-label">Management</strong>경영지원팀
+          </div>
+          <div class="b_org-item">
+            <strong class="b_org-label">R&amp;D</strong>연구개발팀
+          </div>
+          <div class="b_org-item">
+            <strong class="b_org-label">Branding</strong>브랜드전략팀
+          </div>
+          <div class="b_org-item">
+            <strong class="b_org-label">Operations</strong>운영관리팀
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- PATISSERIE -->
+  <div class="b_card b_card--patisserie">
+    <div class="b_card-inner">
+      <div class="b_label-row">
+        <span class="b_label b_label--warm">PATISSERIE</span>
+        <div class="b_label-line b_label-line--warm"></div>
+      </div>
+      <h2 class="b_title">Trêve de Rêve <span class="b_title-sub b_title-sub--warm">트레브 드 레브</span></h2>
+      <p class="b_quote b_quote--warm">"현실을 잊게 하는 단 한 조각의 찰나."</p>
+      <p class="b_desc b_desc--warm">Trêve de Rêve는 단순한 디저트 숍이 아닌 '미각의 오아시스' 입니다. 최상의 기술로 완성된 한 입의 마법을 통해 고객을 현실의 굴레에서 해방시키고, 영혼을 위한 가장 사치스럽고 아름다운 꿈의 시간을 선물합니다.</p>
+ 
+      <div class="b_dept-list">
+ 
+        <div class="b_dept">
+          <div class="b_dept-title">
+            <span class="b_dept-icon">🧑‍🍳</span> L'Atelier (Kitchen)
+          </div>
+          <div class="b_dept-rows">
+            <div class="b_dept-row">
+              <span class="b_dept-name">Chef Pâtissier</span>
+              <span class="b_dept-badge b_dept-badge--head">Head</span>
+            </div>
+            <div class="b_dept-divider"></div>
+            <div class="b_dept-row">
+              <span class="b_dept-name">Sous-Chef</span>
+              <span class="b_dept-role">Expert</span>
+            </div>
+            <div class="b_dept-divider"></div>
+            <div class="b_dept-row">
+              <span class="b_dept-name">Pâtissier</span>
+              <span class="b_dept-role">Artisan</span>
+            </div>
+          </div>
+        </div>
+ 
+        <div class="b_dept">
+          <div class="b_dept-title">
+            <span class="b_dept-icon">🧑‍💼</span> L'Boutique (Service)
+          </div>
+          <div class="b_dept-rows">
+            <div class="b_dept-row">
+              <span class="b_dept-name">Responsable</span>
+              <span class="b_dept-role">Manager</span>
+            </div>
+            <div class="b_dept-divider"></div>
+            <div class="b_dept-row">
+              <span class="b_dept-name">Conseiller</span>
+              <span class="b_dept-role">Crew / Barista</span>
+            </div>
+          </div>
+        </div>
+ 
+      </div>
+    </div>
+  </div>
+ 
+</div>
+</body>
+</html>

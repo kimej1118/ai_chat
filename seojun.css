@@ -1,0 +1,235 @@
+/* ============================
+   BASE
+============================ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #1a1714;
+  font-family: 'Pretendard', sans-serif;
+}
+
+/* ============================
+   SCROLL WRAP
+============================ */
+.b_scroll-wrap {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 20px;
+  padding: 20px;
+  background-color: #1a1714;
+}
+
+/* ============================
+   CARD
+============================ */
+.b_card {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.b_card--hq {
+  background:
+    linear-gradient(to bottom, rgba(41,37,34,.8), rgba(26,23,20,.9)),
+    url('https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&q=80&w=1000') center / cover;
+}
+
+.b_card--patisserie {
+  background:
+    linear-gradient(to bottom, rgba(44,30,26,.85), rgba(28,18,15,.98)),
+    url('https://images.unsplash.com/photo-1550617931-e17a7b70dce2?auto=format&fit=crop&q=80&w=1000') center / cover;
+}
+
+.b_card-inner {
+  padding: 40px 30px;
+}
+
+/* ============================
+   LABEL ROW
+============================ */
+.b_label-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+
+.b_label {
+  color: #c5a059;
+  font-size: .8rem;
+  letter-spacing: .2rem;
+  font-weight: 700;
+}
+
+.b_label--warm {
+  color: #e5b181;
+  font-weight: normal;
+}
+
+.b_label-line {
+  flex-grow: 1;
+  height: 1px;
+  background: linear-gradient(to right, #c5a059, transparent);
+}
+
+.b_label-line--warm {
+  background: linear-gradient(to right, #e5b181, transparent);
+}
+
+/* ============================
+   TITLE
+============================ */
+.b_title {
+  color: #fdfbf7;
+  font-size: 2rem;
+  font-family: serif;
+  letter-spacing: -1px;
+}
+
+.b_title-sub {
+  font-size: .9rem;
+  vertical-align: middle;
+  color: #c5a059;
+}
+
+.b_title-sub--warm {
+  color: #e5b181;
+}
+
+/* ============================
+   QUOTE / DESC
+============================ */
+.b_quote {
+  color: #c5a059;
+  font-style: italic;
+  font-size: 1.1rem;
+  margin: 15px 0 30px;
+  text-shadow: 0 2px 4px rgba(0,0,0,.3);
+}
+
+.b_quote--warm {
+  color: #e5b181;
+}
+
+.b_desc {
+  color: #d1d1d1;
+  line-height: 1.8;
+  font-size: .95rem;
+  margin-bottom: 40px;
+  word-break: keep-all;
+}
+
+.b_desc--warm {
+  color: #e0d7d5;
+}
+
+/* ============================
+   ORG BOX (HQ)
+============================ */
+.b_org-box {
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(197,160,89,.3);
+  border-radius: 15px;
+  padding: 25px;
+}
+
+.b_org-ceo {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.b_org-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.b_org-item {
+  padding: 15px;
+  background: rgba(255,255,255,.05);
+  border-left: 3px solid #c5a059;
+  color: #fdfbf7;
+  font-size: .85rem;
+}
+
+.b_org-ceo .b_org-item {
+  padding: 10px;
+}
+
+.b_org-label {
+  display: block;
+  color: #c5a059;
+  margin-bottom: 4px;
+}
+
+/* ============================
+   DEPT LIST (PATISSERIE)
+============================ */
+.b_dept-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.b_dept-title {
+  font-size: .75rem;
+  color: #e5b181;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.b_dept-icon {
+  font-size: 1.2rem;
+}
+
+.b_dept-rows {
+  background: rgba(255,255,255,.05);
+  border-radius: 12px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.b_dept-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.b_dept-name {
+  color: #fdfbf7;
+  font-size: .9rem;
+}
+
+.b_dept-role {
+  color: #aaa;
+  font-size: .8rem;
+}
+
+.b_dept-badge {
+  font-size: .75rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.b_dept-badge--head {
+  color: #e5b181;
+  background: rgba(229,177,129,.1);
+}
+
+.b_dept-divider {
+  height: 1px;
+  background: rgba(255,255,255,.1);
+}
